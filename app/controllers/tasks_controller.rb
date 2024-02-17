@@ -1,5 +1,16 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[ show edit update destroy ]
+  before_action :set_task, only: %i[ show edit destroy ]
+
+  STUPID_TIMEUP_MESSAGE = '
+    時間切れだ！
+    チャンスはもうない、終わりだ！
+    もう戻れない。
+    時計は既に最後の刻を打ち、運命の扉は閉ざされた。
+    待っても、懇願しても、時間は決して巻き戻らない。
+    逃した機会は永遠に失われ、後悔が心を覆う。
+    今、この時をどれほど大切にすべきだったか、痛感しているだろう。しかし、もう遅い。
+    時間の砂はすべて落ちた。残されたのは、何をしても変えられない結果と、その結果を受け入れるしかない現実だけ。これが、時間切れの真実だ！
+  '
 
   # GET /tasks or /tasks.json
   def index
@@ -36,13 +47,21 @@ class TasksController < ApplicationController
 
   # PATCH/PUT /tasks/1 or /tasks/1.json
   def update
-    respond_to do |format|
-      if @task.update(task_params)
-        format.html { redirect_to task_url(@task), notice: "Task was successfully updated." }
-        format.json { render :show, status: :ok, location: @task }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
+    @task = Task.find_by_token_for(:update_task, params[:task][:update_task_token])
+
+    if @task.nil?
+      set_task
+      @task.errors.add(:base, STUPID_TIMEUP_MESSAGE)
+      render :edit, status: :unprocessable_entity
+    else
+      respond_to do |format|
+        if @task.update(task_params)
+          format.html { redirect_to task_url(@task), notice: "Task was successfully updated." }
+          format.json { render :show, status: :ok, location: @task }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @task.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
