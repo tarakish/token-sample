@@ -56,4 +56,4 @@ end
 #### 5秒以内にSubmitできなかったとき
 [![Image from Gyazo](https://i.gyazo.com/172ce276c3d62200c27e3f6aa4c97faf.gif)](https://gyazo.com/172ce276c3d62200c27e3f6aa4c97faf)
 #### 5秒以内にSubmitできたとき
-[![Image from Gyazo](https://i.gyazo.com/fac4a013345e54e99e28fe9b96fb8351.gif)](https://gyazo.com/fac4a013345e54e99e28fe9b96fb8351)
+[![Image from Gyazo](https://i.gyazo.com/546418db4af0d104e3ac406d051b337f.gif)](https://gyazo.com/546418db4af0d104e3ac406d051b337f)
