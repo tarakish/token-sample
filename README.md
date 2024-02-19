@@ -1,7 +1,8 @@
 # README
 ## What is this repository
 Rails 7.1にて追加された`ActiveRecord::Base.generates_token_for`を試してみるためのサンプルアプリケーション。
-リリースノート：https://railsguides.jp/7_1_release_notes.html#activerecord-base-generates-token-for%E3%81%8C%E8%BF%BD%E5%8A%A0
+
+リリースノート：[https://railsguides.jp/7_1_release_notes.html](https://railsguides.jp/7_1_release_notes.html#activerecord-base-generates-token-for%E3%81%8C%E8%BF%BD%E5%8A%A0)
 
 ## How `ActiveRecord::Base.generates_token_for` is used
 #### 1. Taskモデルにて、5秒でexpireされる`:upadte_task`トークンを生成する定義を追加
